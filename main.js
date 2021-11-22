@@ -1,14 +1,14 @@
-// Call the webspeech API using the command below. 
-//var SpeechRecognition = window.webkitSpeechRecognition;
+var SpeechRecognition = window.webkitSpeechRecognition;
   
 var recognition = new SpeechRecognition();
 
-//Define the function start below and place the below 2 lines inside it. 
+var Textbox = document.getElementById("textbox"); 
 
-
-    document.getElementById("textbox").innerHTML = ""; 
+function start()
+{
+    Textbox.innerHTML = ""; 
     recognition.start();
-
+} 
  
 recognition.onresult = function(event) {
 
@@ -16,7 +16,7 @@ recognition.onresult = function(event) {
 
 var Content = event.results[0][0].transcript;
 
-document.getElementById("textbox").innerHTML = Content;
+    Textbox.innerHTML = Content;
     console.log(Content);
       if(Content =="take my selfie")
       {
@@ -46,8 +46,12 @@ function speak(){
 
  
 camera = document.getElementById("camera");
-//Set webcamera 
-
+Webcam.set({
+    width:360,
+    height:250,
+    image_format : 'jpeg',
+    jpeg_quality:90
+});
 
 function take_selfie()
 {
